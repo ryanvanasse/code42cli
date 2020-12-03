@@ -50,14 +50,7 @@ def add(state, username, cloud_alias, risk_tag, notes):
 @sdk_options()
 def remove(state, username):
     """Remove a user from the high risk employees detection list."""
-    try:
-        _remove_high_risk_employee(state.sdk, username)
-    except Py42NotFoundError:
-        raise Code42CLIError(
-            "User {} is not currently on the high-risk-employee detection list.".format(
-                username
-            )
-        )
+    _remove_high_risk_employee(state.sdk, username)
 
 
 @high_risk_employee.command()

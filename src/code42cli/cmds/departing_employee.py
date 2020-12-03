@@ -47,15 +47,7 @@ def add(state, username, cloud_alias, departure_date, notes):
 @sdk_options()
 def remove(state, username):
     """Remove a user from the departing-employee detection list."""
-    try:
-        _remove_departing_employee(state.sdk, username)
-    except Py42NotFoundError:
-        raise Code42CLIError(
-            "User {} is not currently on the departing-employee detection list.".format(
-                username
-            )
-        )
-
+    _remove_departing_employee(state.sdk, username)
 
 @departing_employee.group(cls=OrderedGroup)
 @sdk_options(hidden=True)
