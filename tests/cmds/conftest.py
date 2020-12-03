@@ -2,8 +2,8 @@ import json as json_module
 import threading
 
 import pytest
-from py42.exceptions import Py42NotFoundError, Py42UserNotOnListError
 from py42.exceptions import Py42UserAlreadyAddedError
+from py42.exceptions import Py42UserNotOnListError
 from py42.sdk import SDKClient
 from requests import HTTPError
 from requests import Request
