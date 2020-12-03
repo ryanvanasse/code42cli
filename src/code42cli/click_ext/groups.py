@@ -3,7 +3,7 @@ import re
 from collections import OrderedDict
 
 import click
-from py42.exceptions import Py42ForbiddenError
+from py42.exceptions import Py42ForbiddenError, Py42UserNotOnListError
 from py42.exceptions import Py42HTTPError
 from py42.exceptions import Py42InvalidRuleOperationError
 from py42.exceptions import Py42LegalHoldNotFoundOrPermissionDeniedError
@@ -53,6 +53,7 @@ class ExceptionHandlingGroup(click.Group):
         except (
             UserDoesNotExistError,
             Py42UserAlreadyAddedError,
+            Py42UserNotOnListError,
             Py42InvalidRuleOperationError,
             Py42LegalHoldNotFoundOrPermissionDeniedError,
         ) as err:
