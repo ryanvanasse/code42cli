@@ -1,4 +1,23 @@
+import click
+
 from code42cli.cmds.shared import get_user_id
+from code42cli.output_formats import OutputFormatter
+
+
+def list_employees(
+    employee_generator, output_format, list_name, additional_header_items=None
+):
+    additional_header_items = additional_header_items or {}
+    header = {"userName": "Username", "notes": "Notes", **additional_header_items}
+    employee_list = []
+    for employees in employee_generator:
+        for employee in employees["items"]:
+            employee_list.append(employee)
+    if employee_list:
+        formatter = OutputFormatter(output_format, header)
+        formatter.echo_formatted_list(employee_list)
+    else:
+        click.echo("There are currently no users on the {} list.".format(list_name))
 
 
 def update_user(sdk, username, cloud_alias=None, risk_tag=None, notes=None):
