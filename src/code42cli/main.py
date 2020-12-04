@@ -17,6 +17,7 @@ from code42cli.cmds.legal_hold import legal_hold
 from code42cli.cmds.profile import profile
 from code42cli.cmds.securitydata import security_data
 from code42cli.options import sdk_options
+from code42cli.cmds.exec import _exec
 
 BANNER = """\b
  dP""b8  dP"Yb  8888b. 888888  dP88  oP"Yb.
@@ -62,3 +63,4 @@ cli.add_command(high_risk_employee)
 cli.add_command(legal_hold)
 cli.add_command(profile)
 cli.add_command(audit_logs)
+cli.add_command(_exec)
