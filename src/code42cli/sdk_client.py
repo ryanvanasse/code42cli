@@ -9,6 +9,7 @@ from requests.exceptions import ConnectionError
 from code42cli.errors import Code42CLIError
 from code42cli.errors import LoggedCLIError
 from code42cli.logger import get_main_cli_logger
+from code42cli.profile import get_profile
 
 py42.settings.items_per_page = 500
 
@@ -45,3 +46,12 @@ def validate_connection(authority_url, username, password):
     except Exception as err:
         logger.log_error(str(err))
         raise LoggedCLIError("Unknown problem validating connection.")
+
+
+
+### EXTENSION
+
+def get_py42(profile_name=None):
+    profile_name = profile_name or not get_profile().name
+    return create_sdk(profile_name, True)
+    
