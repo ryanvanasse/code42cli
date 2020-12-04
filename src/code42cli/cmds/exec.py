@@ -22,7 +22,7 @@ def _exec(state, cmd):
         code42 exec "$(cat script.py)"
 
     """
-
+    
     # Assume sdk var used during exec()
     sdk = state.sdk
     exec(cmd)
